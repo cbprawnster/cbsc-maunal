@@ -37,3 +37,4 @@ ForEach ($Path in $Paths){
         New-Item -Path "$Path" -ItemType Directory | Out-Null
     }
 }
+

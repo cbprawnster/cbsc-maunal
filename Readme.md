@@ -1,4 +1,7 @@
 # Chaturbate Stream Recorder
+> [!WARNING]
+> This repository is also currently under active development. Please be patient while the "easy" implementation of this method is deployed.
+
 > [!NOTE]
 > This repository requires a lot of manual configuration and editing of code in order to make it function in your local environment.
 
