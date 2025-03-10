@@ -1,10 +1,4 @@
 # Chaturbate Stream Recorder
-> [!WARNING]
-> This repository is also currently under active development. Please be patient while the "easy" implementation of this method is deployed.
-
-> [!NOTE]
-> This repository requires a lot of manual configuration and editing of code in order to make it function in your local environment.
-
 > [!NOTE]
 > This repository exists for educational purposes only. **NO SUPPORT**
 
@@ -30,8 +24,10 @@ This repository exists as an example of a "personal usage" method. It should be 
 * type `install.bat` and press enter.
 * Open a regular command prompt and enter ```cd C:\users\<your_user>\downloads\cbsc-manual```
 * type `configure.bat` and press enter.
+* With the regular command prompt enter ```cd C:\CBCAP```
+* Run ```Configure.bat``` to specify the stream capture output location
+* Run ```AddModel.bat``` to add Chaturbate model screen names to the database to record
+* Run ```CBSC.bat``` to begin monitoring for a model to come online and start recording the stream
 
-For additional information how to add models to record, please see the wiki.
+Output is stored in the destination folder you specified with Configure.bat under each model's screen name.
 
-> [!IMPORTANT]
-> You must edit `C:\CBCap\SqlOnlineCheck.ps1` to replace all references to `"Z:\CBCAP\"` with your appropriate destination directory for video.
