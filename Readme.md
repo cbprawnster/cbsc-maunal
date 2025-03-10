@@ -41,3 +41,32 @@ This repository exists as an example of a "personal usage" method. It should be 
 
 Output is stored in the destination folder you specified with Configure.bat under each model's screen name.
 
+## Install Summary
+This section explains what everything does as part of the installation process.
+
+### install.bat
+This batch file calls a PowerShell script that downloads and installs the following required software
+* SQL Server Express 2022
+* 7-Zip
+* FFMPEG
+
+### configure.bat
+This batch file calls a PowerShell script that performs the following actions
+* Unpacks FFMPEG
+* Creates the database Schema
+* Creates the application directory C:\CBCap
+* Copies the necessary files to C:\CBCap
+
+## Operational Summary
+This section explains what everything in C:\CBCap does
+
+### Configure.bat
+This batch file calls `outputconf.ps1` which prompts for user input to specify the output location for stream captures. This generates the file `Output.conf` in C:\CBCap.
+
+This can be run again to update the output location if necessary.
+
+### AddModel.bat
+This batch file calls `modeladder.ps1` which prompts for user input to specify the screen name of a Chaturbate model that the user wishes to record. This then adds a record to the SQL database setting the record flag to true.
+
+### CBSC.bat
+This batch file calls `SQLOnlineCheck.ps1` which is the main code used for stream captures. It continuously loops through the model screen names stored in the database to check if they are online. If the model is online it will use FFMPEG to capture the stream and save it to the output directory specified with Configure.bat
