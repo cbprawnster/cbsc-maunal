@@ -31,4 +31,4 @@ This repository exists as an example of a "personal usage" method. It should be 
 For additional information how to add models to record, please see the wiki.
 
 > [!IMPORTANT]
-> You must edit `C:\CBCap\SqlOnlineCheck.ps1` to replace all references to "Z:\CBCAP\" with your appropriate destination directory for video.
+> You must edit `C:\CBCap\SqlOnlineCheck.ps1` to replace all references to `"Z:\CBCAP\"` with your appropriate destination directory for video.
