@@ -55,13 +55,13 @@ Start-BitsTransfer -Source "https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-essent
 
 # 7-Zip
 Write-Host "$LogDt Installing 7-Zip"
-Start-Process -FilePath ".\Temp\CBSCInstall\7z2409-x64.exe" -ArgumentList "/S" -Wait
+Start-Process -FilePath "C:\Temp\CBSCInstall\CBSCInstall\7z2409-x64.exe" -ArgumentList "/S" -Wait
 
 # SQL Server Express
 Write-Host "$LogDt Installing SQL Server Express 2022"
-Start-Process -FilePath ".\SQL2022-SSEI-Expr.exe" -ArgumentList "/ACTION=Download MEDIAPATH=C:\Temp\CBSCInstall /MEDIATYPE=Core /QUIET" -Wait
-Start-Process -FilePath ".\SQLEXPR_x64_ENU.exe" -ArgumentList "/q /x:.\SQLEXPR_2022" -Wait
-Start-Process -FilePath ".\SQLEXPR_2022\Setup.exe" -ArgumentList "/ConfigurationFile=.\src\SQL\ConfigurationFile2.ini" -Wait
+Start-Process -FilePath "C:\Temp\CBSCInstall\SQL2022-SSEI-Expr.exe" -ArgumentList "/ACTION=Download MEDIAPATH=C:\Temp\CBSCInstall /MEDIATYPE=Core /QUIET" -Wait
+Start-Process -FilePath "C:\Temp\CBSCInstall\SQLEXPR_x64_ENU.exe" -ArgumentList "/q /x:.\SQLEXPR_2022" -Wait
+Start-Process -FilePath "C:\Temp\CBSCInstall\SQLEXPR_2022\Setup.exe" -ArgumentList "/ConfigurationFile=.\src\SQL\ConfigurationFile2.ini" -Wait
 
 Write-Host "End"
 
