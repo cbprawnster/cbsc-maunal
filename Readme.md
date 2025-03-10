@@ -1,10 +1,4 @@
 # Chaturbate Stream Recorder
-> [!WARNING]
-> This repository is also currently under active development. Please be patient while the "easy" implementation of this method is deployed.
-
-> [!NOTE]
-> This repository requires a lot of manual configuration and editing of code in order to make it function in your local environment.
-
 > [!NOTE]
 > This repository exists for educational purposes only. **NO SUPPORT**
 
@@ -24,14 +18,55 @@ This information is important for models to understand when choosing which platf
 
 This repository exists as an example of a "personal usage" method. It should be known that this is easily scalable to capture every online stream simultaneously for re-distribution or as a DDoS attack capturing every online stream simultaneously many times over with no storage required.
 
+## General System Requirements
+* x64 Windows PC or Virtual Machine
+* Windows 10 or newer
+* Administrative privileges on the machine
+* Dual core or better CPU (more required depending on the number of concurrent streams)
+* 8 GB of RAM minimum (more required depending on the number of concurrent streams)
+* 50 Mbps or greater internet speeds (more required depending on the number of concurrent streams)
+* OS and Software drive: 128GB or larger
+* Video storage drive: Minimum 1TB recommended (Streams are very large. Expect ~36MB/Min)
+
 ## Usage
 * Download the zip file of this repository and extract it
-* Open an command prompt as administrator and enter ```cd C:\users\<your_user>\downloads\cbsc-manual```
+* Open an command prompt as administrator and enter ```cd C:\users\<your_user>\downloads\cbsc-manual-main\cbsc-manual-main```
 * type `install.bat` and press enter.
-* Open a regular command prompt and enter ```cd C:\users\<your_user>\downloads\cbsc-manual```
+* Open a regular command prompt and enter ```cd C:\users\<your_user>\downloads\cbsc-manual-main\cbsc-manual-main```
 * type `configure.bat` and press enter.
+* With the regular command prompt enter ```cd C:\CBCAP```
+* Run ```Configure.bat``` to specify the stream capture output location
+* Run ```AddModel.bat``` to add Chaturbate model screen names to the database to record
+* Run ```CBSC.bat``` to begin monitoring for a model to come online and start recording the stream
 
-For additional information how to add models to record, please see the wiki.
+Output is stored in the destination folder you specified with Configure.bat under each model's screen name.
 
-> [!IMPORTANT]
-> You must edit `C:\CBCap\SqlOnlineCheck.ps1` to replace all references to `"Z:\CBCAP\"` with your appropriate destination directory for video.
+## Install Summary
+This section explains what everything does as part of the installation process.
+
+### install.bat
+This batch file calls a PowerShell script that downloads and installs the following required software
+* SQL Server Express 2022
+* 7-Zip
+* FFMPEG
+
+### configure.bat
+This batch file calls a PowerShell script that performs the following actions
+* Unpacks FFMPEG
+* Creates the database Schema
+* Creates the application directory C:\CBCap
+* Copies the necessary files to C:\CBCap
+
+## Operational Summary
+This section explains what everything in C:\CBCap does
+
+### Configure.bat
+This batch file calls `outputconf.ps1` which prompts for user input to specify the output location for stream captures. This generates the file `Output.conf` in C:\CBCap.
+
+This can be run again to update the output location if necessary.
+
+### AddModel.bat
+This batch file calls `modeladder.ps1` which prompts for user input to specify the screen name of a Chaturbate model that the user wishes to record. This then adds a record to the SQL database setting the record flag to true.
+
+### CBSC.bat
+This batch file calls `SQLOnlineCheck.ps1` which is the main code used for stream captures. It continuously loops through the model screen names stored in the database to check if they are online. If the model is online it will use FFMPEG to capture the stream and save it to the output directory specified with Configure.bat
