@@ -18,6 +18,16 @@ This information is important for models to understand when choosing which platf
 
 This repository exists as an example of a "personal usage" method. It should be known that this is easily scalable to capture every online stream simultaneously for re-distribution or as a DDoS attack capturing every online stream simultaneously many times over with no storage required.
 
+## General System Requirements
+* x64 Windows PC or Virtual Machine
+* Windows 10 or newer
+* Administrative privileges on the machine
+* Dual core or better CPU (more required depending on the number of concurrent streams)
+* 8 GB of RAM minimum (more required depending on the number of concurrent streams)
+* 50 Mbps or greater internet speeds (more required depending on the number of concurrent streams)
+* OS and Software drive: 128GB or larger
+* Video storage drive: Minimum 1TB recommended (Streams are very large. Expect ~36MB/Min)
+
 ## Usage
 * Download the zip file of this repository and extract it
 * Open an command prompt as administrator and enter ```cd C:\users\<your_user>\downloads\cbsc-manual-main\cbsc-manual-main```
