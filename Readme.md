@@ -20,9 +20,9 @@ This repository exists as an example of a "personal usage" method. It should be 
 
 ## Usage
 * Download the zip file of this repository and extract it
-* Open an command prompt as administrator and enter ```cd C:\users\<your_user>\downloads\cbsc-manual```
+* Open an command prompt as administrator and enter ```cd C:\users\<your_user>\downloads\cbsc-manual-main\cbsc-manual-main```
 * type `install.bat` and press enter.
-* Open a regular command prompt and enter ```cd C:\users\<your_user>\downloads\cbsc-manual```
+* Open a regular command prompt and enter ```cd C:\users\<your_user>\downloads\cbsc-manual-main\cbsc-manual-main```
 * type `configure.bat` and press enter.
 * With the regular command prompt enter ```cd C:\CBCAP```
 * Run ```Configure.bat``` to specify the stream capture output location
