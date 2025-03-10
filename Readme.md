@@ -1,4 +1,4 @@
-# Chaturbate Screen Recorder
+# Chaturbate Stream Recorder
 > [!NOTE]
 > This repository requires a lot of manual configuration and editing of code in order to make it function in your local environment.
 
@@ -25,8 +25,10 @@ This repository exists as an example of a "personal usage" method. It should be 
 * Download the zip file of this repository and extract it
 * Open an command prompt as administrator and enter ```cd C:\users\<your_user>\downloads\cbsc-manual```
 * type `install.bat` and press enter.
+* Open a regular command prompt and enter ```cd C:\users\<your_user>\downloads\cbsc-manual```
+* type `configure.bat` and press enter.
 
-All pre-requisite software will be installed.
+For additional information how to add models to record, please see the wiki.
 
 > [!IMPORTANT]
 > You must edit `C:\CBCap\SqlOnlineCheck.ps1` to replace all references to "Z:\CBCAP\" with your appropriate destination directory for video.
