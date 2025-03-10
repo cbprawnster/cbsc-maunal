@@ -1,3 +1,6 @@
+# Read Output.conf
+$Output = Get-Content "C:\CBCAP\Output.conf"
+
 #This loops indefintely since it doesn't want to run as a scheduled task. Will consider fixing that later if I get motivated enough.
 $looper = get-date -format yyyy
 while($looper -ne '1979'){
@@ -24,7 +27,7 @@ while($looper -ne '1979'){
         foreach ($Model in $ScreenName){
             # If a new model has been added to the database, or this is run fresh,
             # the script will check to make sure there is a place to store the stream data
-            $dir = "Z:\CBCAP\$model"
+            $dir = "$Output\$model"
             if(!(Test-Path -Path $dir )){
             New-Item -ItemType directory -Path $dir
             }
@@ -59,13 +62,13 @@ while($looper -ne '1979'){
 
                                 $timestamp = get-date -Format yyyy-MM-dd_HHmmss
                                 # Starts FFMPEG - If the stream stops, FFMPEG will automatically quit
-                                $FFMPEGPID = start-process -WindowStyle hidden -FilePath "ffmpeg.exe" -WorkingDirectory "C:\CBCAP" -ArgumentList "-i $CleanURL -c copy Z:\CBCAP\$model\$model-$timestamp.mkv" -PassThru
+                                $FFMPEGPID = start-process -WindowStyle hidden -FilePath "ffmpeg.exe" -WorkingDirectory "C:\CBCAP" -ArgumentList "-i $CleanURL -c copy $Output\$model\$model-$timestamp.mkv" -PassThru
                                 $DBPID = $FFMPEGPID.Id
                                                                 
                                 # Write the pertinent data to the datbase to log that recording is taking place
                                 $RecordingSQL = "UPDATE Models SET Online = 'Y', URL = '$StreamURL', PID = '$DBPID' WHERE ScreenName ='$Model';"
                                 $RecordingOutput = Invoke-Sqlcmd -query $RecordingSQL -ConnectionString "Data Source=localhost\SQLEXPRESS;Initial Catalog=CBScreenCap;Integrated Security=True" 
-                                $LogSQL = "INSERT INTO [dbo].[RecordLog] ([ScreenName],[PID],[FilePath],[RecordStart],[Converted],[ConversionPath],[ConversionDate]) VALUES ('$Model','$DBPID','Z:\CBCAP\$model\$model-$timestamp.mkv',getdate(),0,'',NULL)"
+                                $LogSQL = "INSERT INTO [dbo].[RecordLog] ([ScreenName],[PID],[FilePath],[RecordStart],[Converted],[ConversionPath],[ConversionDate]) VALUES ('$Model','$DBPID','$Output\$model\$model-$timestamp.mkv',getdate(),0,'',NULL)"
                                 $LogOutput = Invoke-Sqlcmd -query $LogSQL -ConnectionString "Data Source=localhost\SQLEXPRESS;Initial Catalog=CBScreenCap;Integrated Security=True" 
 
                                 write-host $model "ONLINE - Recording Started"
@@ -80,13 +83,13 @@ while($looper -ne '1979'){
                                     #set the database records to reflect that they are offline
                                         $timestamp = get-date -Format yyyy-mm-dd_HHmmss
                                         # Starts FFMPEG - If the stream stops, FFMPEG will automatically quit
-                                        $FFMPEGPID = start-process -WindowStyle hidden -FilePath "ffmpeg.exe" -WorkingDirectory "C:\CBCAP" -ArgumentList "-i $CleanURL -c copy Z:\CBCAP\$model\$model-$timestamp.mkv" -PassThru
+                                        $FFMPEGPID = start-process -WindowStyle hidden -FilePath "ffmpeg.exe" -WorkingDirectory "C:\CBCAP" -ArgumentList "-i $CleanURL -c copy $Output\$model\$model-$timestamp.mkv" -PassThru
                                         $DBPID = $FFMPEGPID.Id
                                                                 
                                         # Write the pertinent data to the datbase to log that recording is taking place
                                         $RecordingSQL = "UPDATE Models SET Online = 'Y', URL = '$StreamURL', PID = '$DBPID' WHERE ScreenName ='$Model';"
                                         $RecordingOutput = Invoke-Sqlcmd -query $RecordingSQL -ConnectionString "Data Source=localhost\SQLEXPRESS;Initial Catalog=CBScreenCap;Integrated Security=True" 
-                                        $LogSQL = "INSERT INTO [dbo].[RecordLog] ([ScreenName],[PID],[FilePath],[RecordStart],[Converted],[ConversionPath],[ConversionDate]) VALUES ('$Model','$DBPID','Z:\CBCAP\$model\$model-$timestamp.mkv',getdate(),0,'',NULL)"
+                                        $LogSQL = "INSERT INTO [dbo].[RecordLog] ([ScreenName],[PID],[FilePath],[RecordStart],[Converted],[ConversionPath],[ConversionDate]) VALUES ('$Model','$DBPID','$Output\$model\$model-$timestamp.mkv',getdate(),0,'',NULL)"
                                         $LogOutput = Invoke-Sqlcmd -query $LogSQL -ConnectionString "Data Source=localhost\SQLEXPRESS;Initial Catalog=CBScreenCap;Integrated Security=True" 
                                         write-host $model "ONLINE - Recording Started"
                                         }

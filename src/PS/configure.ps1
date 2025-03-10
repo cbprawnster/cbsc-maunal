@@ -18,16 +18,26 @@ Function LogDt{
     write-host "$date -"
 }
 
+$Paths = ("C:\Temp\CBSCInstall\FFMPEG")
+
+ForEach ($Path in $Paths){
+    $PathCk = Test-Path $Path
+
+    If ($PathCk -eq $false){
+        New-Item -Path "$Path" -ItemType Directory | Out-Null
+    }
+}
+
 # Extract 7-Zip Binaries
-Write-Host "$LogDt Extracting FFMPEG Binaries"
-Start-Process "C:\Program Files\7-Zip\7z.exe" -ArgumentList "x -oC:\Temp C:\Temp\ffmpeg-git-essentials.7z"
+Write-Host LogDt " Extracting FFMPEG Binaries"
+Start-Process "C:\Program Files\7-Zip\7z.exe" -ArgumentList "e -oC:\Temp\CBSCInstall\FFMPEG C:\Temp\CBSCInstall\ffmpeg-git-essentials.7z" -Wait
 
 # Setup Database
-Write-Host "$LogDt Creating database and tables"
+Write-Host LogDt " Creating database and tables"
 Invoke-Sqlcmd -InputFile ".\src\SQL\DBCreate.sql" -ConnectionString "Data Source=localhost\SQLEXPRESS;Initial Catalog=Master;Integrated Security=True"
 
 # Create app directory structure
-Write-Host "$LogDt Creating Directory Structure"
+Write-Host LogDt " Creating Directory Structure"
 $Paths = ("C:\CBCap")
 
 ForEach ($Path in $Paths){
@@ -38,3 +48,10 @@ ForEach ($Path in $Paths){
     }
 }
 
+Copy-Item -Path "C:\Temp\CBSCInstall\FFMPEG\ffmpeg.exe" -Destination "C:\CBCAP"
+Copy-Item -Path ".\src\PS\modeladder.ps1" -Destination "C:\CBCAP"
+Copy-Item -Path ".\src\PS\SQLOnlineCheck.ps1" -Destination "C:\CBCAP"
+Copy-Item -Path ".\src\BAT\AddModel.bat" -Destination "C:\CBCAP"
+Copy-Item -Path ".\src\BAT\CBSC.bat" -Destination "C:\CBCAP"
+Copy-Item -Path ".\src\Bat\Configure.bat" -Destination "C:\CBCAP"
+Copy-Item -Path ".\src\PS\outputconf.ps1" -Destination "C:\CBCAP"
