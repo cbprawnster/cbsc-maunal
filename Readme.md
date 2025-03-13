@@ -1,6 +1,7 @@
 # Chaturbate Stream Recorder
 > [!NOTE]
-> It appears Chaturbate has rectified this design flaw after publicly releasing this repository. The repository will archived and remain available for historical purposes. Only took half a decade to get them to fix it by publicly shaming them, but it's done.
+> ~~It appears Chaturbate has rectified this design flaw after publicly releasing this repository. The repository will archived and remain available for historical purposes. Only took half a decade to get them to fix it by publicly shaming them, but it's done.~~
+> Their "Fix" was apparently only temporary. This method is still **FULLY** available. Repo unarchived. Have fun...
 
 > [!NOTE]
 > This repository exists for educational purposes only. **NO SUPPORT**
