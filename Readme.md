@@ -10,7 +10,7 @@
 > Should you choose to utilize this code, it is _**HIGHLY**_ recommended to use a VPN service to mask your IP traffic.
 
 ## Ass Covering
-Models, you need to know that this method is being investigated. I don't know what will happen. This is the report:
+Models, you need to know that this method is being investigated. I don't know what will happen. This is the most recent report (not the first):
 https://hackerone.com/reports/3037437
 
 ![Capture2](https://github.com/user-attachments/assets/cc77be91-62bc-46ca-a245-8628b6969ddf)
