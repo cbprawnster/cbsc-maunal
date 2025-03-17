@@ -9,6 +9,12 @@
 > [!CAUTION]
 > Should you choose to utilize this code, it is _**HIGHLY**_ recommended to use a VPN service to mask your IP traffic.
 
+## Ass Covering
+Models, you need to know that this method is actively being suppressed. My latest report was simply removed. They don't care about you at all.
+![Capture2](https://github.com/user-attachments/assets/31e95e9f-950c-47b8-959a-b99ba1f2d06d)
+
+![Capture](https://github.com/user-attachments/assets/02bc778f-4418-46ed-83bb-dec169799b56)
+
 ## Summary
 This repository highlights a significant design flaw in Chaturbate.com. Model streams are easily captured programmatically in bulk. Reports on this flaw have gone completely ignored. From the standpoint of re-distribution of model streams, this is highly problematic from a monetization standpoint.
 
