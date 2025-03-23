@@ -15,6 +15,7 @@ https://hackerone.com/reports/3037437
 
 ![Capture2](https://github.com/user-attachments/assets/cc77be91-62bc-46ca-a245-8628b6969ddf)
 
+![image](https://github.com/user-attachments/assets/8b9887b3-c68b-4de1-8403-5980a331ec1c)
 
 ## Summary
 This repository highlights a significant design flaw in Chaturbate.com. Model streams are easily captured programmatically in bulk. Reports on this flaw have gone completely ignored. From the standpoint of re-distribution of model streams, this is highly problematic from a monetization standpoint.
